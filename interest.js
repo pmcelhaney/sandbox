@@ -13,11 +13,11 @@ function booleanPairCombinations(n) {
     .concat(combinationsMinusOne.map((rows) => [false, ...rows]));
 }
 
-function calculateCompoundingInterest(principal, interestRate, years) {
-  const days = years * 365;
-  const dailyRate = annualRate / 365;
-  return principal * Math.pow(1 + interestRate, days);
-}
+function calculateCompoundingInterest(principal, interestRate, years) {   
+  const days = years * 365;   
+  const dailyRate = annualRate / 365;  
+  return principal * Math.pow(1 + interestRate, days);   
+}    
 
 module.exports = class Boolio {
   constructor(expression) {

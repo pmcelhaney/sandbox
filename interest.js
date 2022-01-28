@@ -13,11 +13,29 @@ function booleanPairCombinations(n) {
     .concat(combinationsMinusOne.map((rows) => [false, ...rows]));
 }
 
-function calculateCompoundingInterest(principal, interestRate, years) {   
-  const days = years * 365;   
-  const dailyRate = annualRate / 365;  
-  return principal * Math.pow(1 + interestRate, days);   
-}    
+function truthTable() {
+  const atoms = Array.from(this.atoms());
+  return {
+    atoms,
+    rows: booleanPairCombinations(atoms.length).map((row) => {
+      const values = {};
+      atoms.forEach((atom, i) => {
+        values[atom] = row[i];
+      });
+      return [...row, this.evaluate(values)];
+    }),
+  };
+}
+
+function calculateCompoundingInterest(principal, interestRate, years) {
+  const days = years * 365;
+  const dailyRate = annualRate / 365;
+  return principal * Math.pow(1 + interestRate, days);
+}
+
+function monthsToYears(months) {
+  return months / 12;
+}
 
 module.exports = class Boolio {
   constructor(expression) {
